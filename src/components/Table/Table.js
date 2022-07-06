@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 import TableFooter from './TableFooter/TableFooter';
 import useTable from "../../hooks/useTable";
 import './table.scss';
 
-const Table = ({ data }) => {
+const Table = () => {
+    const data = useSelector((state) => state.data);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [page, setPage] = useState(1);
     const { slice, range } = useTable(data, page, rowsPerPage);
@@ -80,7 +82,7 @@ const Table = ({ data }) => {
                     ))}
                 </tbody>
             </table>
-            <TableFooter range={range} setPage={setPage} rowsPerPage={rowsPerPage} setRowsPerPage={setRowsPerPage} page={page} data={data} />
+            <TableFooter range={range} setPage={setPage} rowsPerPage={rowsPerPage} setRowsPerPage={setRowsPerPage} page={page}/>
         </div>
     )
 }

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
 import DropdownMenu from "./DropdownMenu";
-import './tableFooter.scss'
+import './tableFooter.scss';
 
-const TableFooter = ({ range, setPage, rowsPerPage, page, setRowsPerPage, data }) => {
+const TableFooter = ({ range, setPage, rowsPerPage, page, setRowsPerPage}) => {
+  const data = useSelector((state) => state.data);
   const [isActivePrevious, setIsActivePrevious] = useState(false);
   const [isActiveNext, setIsActiveNext] = useState(false);
 
