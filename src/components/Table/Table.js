@@ -56,20 +56,20 @@ const Table = () => {
                         <tr className="hr-line" key={el.id}>
                             <td>
                                 <div className="table-cell">
-                                    <div className="truncate">№{el.id}</div>
+                                    <a className="truncate" href={`/task/${el.oguid}`}>№{el.id}</a>
                                     <div className="truncate">{formatDate(el.created_date)}</div>
                                 </div>
                             </td>
                             <td>
                                 <div className="table-cell">
-                                    <div className="truncate">{el.order_type.name}</div>
-                                    <div className="truncate">{formatAuthor(el.created_user)}</div>
+                                    <a className="truncate" href={`/order_type/${el.order_type.oguid}`}>{el.order_type.name}</a>
+                                    <a className="truncate" href={`/user/${el.created_user.oguid}`}>{formatAuthor(el.created_user)}</a>
                                 </div>
                             </td>
                             <td>
                                 <div className="table-cell">
-                                    <div className="truncate">{el.account.name}</div>
-                                    <div className="truncate">{el.terminal.name}</div>
+                                    <a className="truncate" href={`/account/${el.account.oguid}`}>{el.account.name}</a>
+                                    <a className="truncate" href={`/terminal/${el.terminal.oguid}`}>{el.terminal.name}</a>
                                 </div>
                             </td>
                             <td className="status-cell">

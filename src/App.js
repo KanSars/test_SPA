@@ -12,9 +12,7 @@ function App () {
     <main>
       <div className='app'>
         <h1>Тестовое задание</h1>
-        <div className='app'>
         <Table/>        
-      </div>
       </div>
     </main>
   )
