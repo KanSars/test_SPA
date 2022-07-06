@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 import TableFooter from './TableFooter/TableFooter';
 import useTable from "../../hooks/useTable";
 import './table.scss';
 
-const Table = ({ data }) => {
+const Table = () => {
+    const data = useSelector((state) => state.data);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [page, setPage] = useState(1);
     const { slice, range } = useTable(data, page, rowsPerPage);
@@ -54,20 +56,20 @@ const Table = ({ data }) => {
                         <tr className="hr-line" key={el.id}>
                             <td>
                                 <div className="table-cell">
-                                    <div className="truncate">№{el.id}</div>
+                                    <a className="truncate" href={`/task/${el.oguid}`}>№{el.id}</a>
                                     <div className="truncate">{formatDate(el.created_date)}</div>
                                 </div>
                             </td>
                             <td>
                                 <div className="table-cell">
-                                    <div className="truncate">{el.order_type.name}</div>
-                                    <div className="truncate">{formatAuthor(el.created_user)}</div>
+                                    <a className="truncate" href={`/order_type/${el.order_type.oguid}`}>{el.order_type.name}</a>
+                                    <a className="truncate" href={`/user/${el.created_user.oguid}`}>{formatAuthor(el.created_user)}</a>
                                 </div>
                             </td>
                             <td>
                                 <div className="table-cell">
-                                    <div className="truncate">{el.account.name}</div>
-                                    <div className="truncate">{el.terminal.name}</div>
+                                    <a className="truncate" href={`/account/${el.account.oguid}`}>{el.account.name}</a>
+                                    <a className="truncate" href={`/terminal/${el.terminal.oguid}`}>{el.terminal.name}</a>
                                 </div>
                             </td>
                             <td className="status-cell">
@@ -80,7 +82,7 @@ const Table = ({ data }) => {
                     ))}
                 </tbody>
             </table>
-            <TableFooter range={range} setPage={setPage} rowsPerPage={rowsPerPage} setRowsPerPage={setRowsPerPage} page={page} data={data} />
+            <TableFooter range={range} setPage={setPage} rowsPerPage={rowsPerPage} setRowsPerPage={setRowsPerPage} page={page}/>
         </div>
     )
 }
