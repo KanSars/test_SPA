@@ -1,0 +1,32 @@
+.tableFooter {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.pagination {
+    margin: 0 10px;
+    display: flex;
+    border: 1px solid gray;
+}
+
+.button {
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.button.active {
+    font-weight: bold;
+}
+
+.page-number {
+    width: 60px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
